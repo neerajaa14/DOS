@@ -1,0 +1,29 @@
+from tutorial_db import Session, TutorialPageContent
+
+def add_tutorial_content_to_database():
+    session = Session()
+    session.query(TutorialPageContent).delete()
+
+    content_entries = [
+        TutorialPageContent(title="INTRODUCTION",
+                            content="\nA Denial of Service (DoS) attack is an attempt to make a machine or network resource unavailable to its intended users by temporarily or indefinitely disrupting services. This is typically achieved by overwhelming the target with a flood of internet traffic or exploiting specific vulnerabilities to cause system failures.So, let's dive in and learn more about this important topic!"),
+
+        TutorialPageContent(title="WORKING", 
+                            content="\n\n1. Target Identification:  The attacker identifies a target, which could be a web server, network infrastructure, or an application.\n2.  Attack Planning:  The attacker chooses a method to execute the DoS attack, which could involve flooding the target with traffic or exploiting vulnerabilities.\n3.  Resource Exhaustion:  The attacker sends a massive volume of traffic or data packets to the target, aiming to exhaust its resources (e.g., bandwidth, CPU, memory).\n4.  Service Disruption:  The excessive traffic or resource depletion causes the target system to slow down or become completely unresponsive, thereby denying legitimate users access to the service."),
+
+        TutorialPageContent(title=" TYPES OF DOS ATTACKS", 
+                            content="\n\n1.  Volume-Based Attacks: \n-  ICMP Flood:  Involves sending a large number of ICMP Echo Request (ping) packets to the target to consume bandwidth.\n-  UDP Flood:  Sends a large number of UDP packets to random ports on a target system, causing it to check for non-existent applications and send ICMP Destination Unreachable messages.\n\n2.  Protocol Attacks: \n-  SYN Flood:  Exploits the TCP handshake process by sending a large number of SYN requests without completing the handshake, causing the target to hold resources for half-open connections.\n-  Ping of Death:  Sends malformed or oversized packets to the target, which cannot handle the packet size, leading to crashes or reboots.\n\n3.  Application Layer Attacks: \n-  HTTP Flood:  Overloads a web server by sending numerous HTTP requests, often targeting resource-intensive operations like database queries.\n-  Slowloris:  Sends incomplete HTTP requests to keep connections open as long as possible, eventually exhausting the server connection pool."),
+        TutorialPageContent(title="POTENTIAL OUTCOMES", 
+                            content="\n\n-  Service Unavailability:  Legitimate users cannot access the target service due to resource exhaustion or system crashes.\n-  Resource Depletion:  The target system’s CPU, memory, or bandwidth is consumed, leading to performance degradation.\n-  Economic Loss:  Businesses suffer financial losses due to downtime and reduced customer trust.\n-  Reputation Damage:  Prolonged service unavailability can harm the reputation of the affected organization."),
+        TutorialPageContent(title="EXAMPLE SCENARIO", 
+                            content="\n.  Simple HTTP Flood Attack: \n  -  Step 1:  An attacker writes a script to send an overwhelming number of HTTP GET requests to a target web server.\n-  Step 2:  The script runs, sending thousands of requests per second.\n-  Outcome:  The web server becomes overwhelmed, unable to process legitimate requests, leading to a denial of service.\n\n2.  SYN Flood Attack:  \n-  Step 1:  The attacker sends a flood of SYN packets to the target’s TCP port. \n-  Step 2:  The target server allocates resources to half-open connections, waiting for the final ACK packet, which never arrives.\n-  Outcome:  The servers connection table fills up, preventing new legitimate connections and causing denial of service."
+                            ),       
+        TutorialPageContent(title="Preventive Measures", 
+                            content="1.  Rate Limiting: \n - Implement controls to limit the number of requests a user can make to a service within a specific timeframe, helping to mitigate traffic floods.\n\n2.  Firewalls and Intrusion Detection Systems: \n - Deploy firewalls and IDS/IPS systems to detect and block malicious traffic patterns. Configure these systems to recognize and respond to DoS attack signatures.\n\n3.  Load Balancing: \n - Use load balancers to distribute incoming traffic across multiple servers. This prevents any single server from becoming overwhelmed and helps maintain service availability.\n\n4.  Redundancy and Failover:  \n - Set up redundant systems and failover mechanisms to ensure that backup systems can take over if the primary system is attacked. This minimizes downtime and maintains service continuity.\n\n5.  Traffic Analysis:  \n - Regularly analyze network traffic to identify unusual patterns that may indicate an ongoing DoS attack. Use automated tools to provide real-time alerts and responses to potential threats\n\n6.  Secure Configurations: \n - Ensure systems are securely configured, including proper setup of network devices, servers, and applications. Regularly apply patches and updates to fix vulnerabilities that could be exploited in DoS attacks.\n\n7. Blackholing and Sinkholing:\n - Blackholing:  Directs malicious traffic to a null route, effectively dropping it from the network. \n -  Sinkholing:  Redirects malicious traffic to a controlled IP address for analysis and mitigation."),
+    ]
+    for entry in content_entries:
+        session.add(entry)
+
+    session.commit()
+
+    session.close()
