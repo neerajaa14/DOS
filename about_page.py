@@ -63,16 +63,16 @@ class AboutPage(QWidget):
 
         self.add_heading("Get Involved", inner_layout, font_size=30, alignment=Qt.AlignmentFlag.AlignCenter)
         self.add_paragraph("""
-            Join us in our mission to promote web security and combat XSS attacks. Whether you're a beginner looking to learn or an expert willing to contribute, there are many ways to get involved with XSSify: <br><br> <b><em>Spread the Word</em></b>: Share XSSify with your friends, colleagues, and networks to help raise awareness about XSS attacks and the importance of web security. <br><br>
-            <b><em>Contribute Content</em></b>: Are you knowledgeable about XSS attacks or web security? Consider contributing tutorials, quizzes, or case studies to help enrich the learning experience for our users. <br><br>
-            <b><em>Report Vulnerabilities</em></b>: If you discover XSS vulnerabilities in websites or applications, report them responsibly to the respective organizations and help make the web a safer place for everyone.
+            Join us in our mission to promote web security and combat DoS attacks. Whether you're a beginner looking to learn or an expert willing to contribute, there are many ways to get involved with DoS: <br><br> <b><em>Spread the Word</em></b>: Share with your friends, colleagues, and networks to help raise awareness about DoS attacks and the importance of web security. <br><br>
+            <b><em>Contribute Content</em></b>: Are you knowledgeable about DoS attacks or web security? Consider contributing tutorials, quizzes, or case studies to help enrich the learning experience for our users. <br><br>
+            <b><em>Report Vulnerabilities</em></b>: If you discover DoS vulnerabilities in websites or applications, report them responsibly to the respective organizations and help make the web a safer place for everyone.
         """, inner_layout)
 
     
 
         self.add_heading("Contact Us", inner_layout, font_size=30, alignment=Qt.AlignmentFlag.AlignCenter)
         self.add_paragraph("""
-            Have questions, feedback, or suggestions for XSSify? We'd love to hear from you! Get in touch with us via email at <em>contact@xssify.com</em>
+            Have questions, feedback, or suggestions for DoS? We'd love to hear from you! Get in touch with us via email at <em>contact@dos.com</em>
         """, inner_layout)
 
     def add_heading(self, text, parent_layout, font_size, alignment):
